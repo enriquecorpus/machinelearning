@@ -21,6 +21,7 @@ prediction.loadModel(num_objects=2)  # number of trained objects
 
 
 def predict(img):
+    # REMOVE THIS IN THE FUTURE, USE FILE STREAM
     import base64
     imgdata = base64.b64decode(img)
     filename = 'some_image.jpg'  # I assume you have a way of picking unique filenames
