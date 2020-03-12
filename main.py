@@ -29,7 +29,6 @@ def predict(img):
     predictions, probabilities = prediction.predictImage(image_input=filename, result_count=1)
 
     for eachPrediction, eachProbability in zip(predictions, probabilities):
-        print(str(eachPrediction) + " : " + str(eachProbability))
         return {'Result': str(eachPrediction), 'Accuracy': str(eachProbability)}
 
 
