@@ -1,2 +1,5 @@
 .python-version
 /data/
+img1.jpg
+img2.png
+__pycache__/
