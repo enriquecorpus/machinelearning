@@ -16,3 +16,4 @@ def predict(img):
 
     for eachPrediction, eachProbability in zip(predictions, probabilities):
         print(str(eachPrediction) + " : " + str(eachProbability))
+    return {'status': 'ok'}
