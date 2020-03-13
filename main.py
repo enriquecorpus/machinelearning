@@ -5,8 +5,8 @@ import os
 import os.path
 from keras import backend as K
 import json
-# from cv2 import imread
-# from cv2 import CascadeClassifier
+from cv2 import imread
+from cv2 import CascadeClassifier
 # load the photograph
 # load the pre-trained model
 # ------------------------------------------------
@@ -22,7 +22,7 @@ prediction.setModelPath('{path}/traineddata/model_ex-032_acc-0.765625.h5'.format
 prediction.setJsonPath('{path}/traineddata/model_class.json'.format(path=execution_path))
 prediction.loadModel(num_objects=2)  # number of trained objects
 
-# classifier = CascadeClassifier('haarcascade_frontalface_default.xml')
+classifier = CascadeClassifier('haarcascade_frontalface_default.xml')
 
 
 def predict(img):
@@ -35,10 +35,10 @@ def predict(img):
     with open(filename, 'wb') as f:
         f.write(imgdata)
 
-    # pixels = imread(filename)
-    # x = classifier.detectMultiScale(pixels)
-    # if not len(x):
-    #     return {'Result': 'Unknown object'}
+    pixels = imread(filename)
+    x = classifier.detectMultiScale(pixels)
+    if not len(x):
+        return {'Result': 'Unknown object'}
     predictions, probabilities = prediction.predictImage(image_input=filename, result_count=1)
 
     for eachPrediction, eachProbability in zip(predictions, probabilities):
