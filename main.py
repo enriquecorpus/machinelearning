@@ -36,7 +36,8 @@ def predict(img):
         f.write(imgdata)
 
     pixels = imread(filename)
-    if not classifier.detectMultiScale(pixels):
+    x = classifier.detectMultiScale(pixels)
+    if not len(x):
         return {'Result': 'Unknown object'}
     predictions, probabilities = prediction.predictImage(image_input=filename, result_count=1)
 
